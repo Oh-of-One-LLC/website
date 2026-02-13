@@ -5,11 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "vite build",
     "preview": "vite preview"
   },
   "devDependencies": {
-    "typescript": "~5.9.3",
+    "@tailwindcss/cli": "^4.1.18",
+    "@tailwindcss/vite": "^4.1.18",
+    "tailwindcss": "^4.1.18",
     "vite": "^7.3.1"
   }
 }
