@@ -1,22 +1,27 @@
 name: deploy-to-aws
-run-name: Deploying {{ github.ref }}
+run-name: Deploying ${{ github.ref }}
 on:
   push:
     # branches:
     #   - "main"
 
 jobs:
-  checkout:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - name: Checkout main branch
+        uses: actions/checkout@v6
         with:
-          ref:"main"
-      - run: echo "checked out main!"
+          ref: "main"
+        run: echo "checked out main!"
 
-  build code:
-    runs-on: ubuntu-latest
-    - uses: actions/setup-node@v6
-      with:
-        node-version: 'latest'
-    - run: npm install && npm run build
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 'latest'
+      
+      - name: Build
+        run: |
+        npm ci
+        npm run build
+
