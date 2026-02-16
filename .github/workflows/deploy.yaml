@@ -23,6 +23,7 @@ jobs:
           node-version: 'latest'
       
       - name: Build
-        run: npm ci |
+        run: |
+          npm ci
           npm run build
 
